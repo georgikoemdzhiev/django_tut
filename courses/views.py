@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse
 #from __future__ import unicode_literals
 
 from django.shortcuts import render
@@ -16,3 +15,10 @@ def course_list(request):
 def my_method(request):
     courses = Course.objects.all()
     return render(request, 'courses/my.html', {'courses':courses})
+
+
+def course_detail(request, pk):
+    course = Course.objects.get(pk = pk)
+    return render(request,
+                  'courses/course_detail.html',
+                   {'course':course})
